@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import {Navbar} from "./components/navbar";
+import {Title} from "./components/title";
+import {NavItem} from "./components/nav-item";
+import {Header} from "./components/header";
+import {Avatar} from "./components/avatar";
+import {Text} from "./components/text";
+import {Button} from "./components/Button";
+
+const items = [
+  "Página Inicial",
+  "Pesquisa",
+  "Explorar",
+  "Reels",
+  "Mensagens",
+  "Notificações",
+  "Criar",
+  "Perfil",
+  "Mais",
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <>
+      <Navbar>
+        <Title />
+        {items.map((item) => (
+          <NavItem key={item} text={item} />
+        ))}
+      </Navbar>
+      <Header>
+        <Avatar />
+        <Text bold={true}>@adatechbr</Text>
+        <Button>Seguindo</Button>
+        <Button>Enviar mensagem</Button>
+        <Text>211 publicações</Text>
+        <Text>44,2 mil seguidores</Text>
+        <Text>2 seguindo</Text>
+      </Header>
+    </>
+  );
 }
 
-export default App
+export default App;
