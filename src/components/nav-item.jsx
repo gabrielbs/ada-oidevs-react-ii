@@ -1,3 +1,5 @@
+import {Text} from "../ui/text";
+
 export const NavItem = (props) => {
-  return <div>{props.text}</div>;
+  return <Text>{props.text}</Text>;
 };
