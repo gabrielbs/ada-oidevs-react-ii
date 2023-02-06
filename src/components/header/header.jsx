@@ -7,7 +7,7 @@ export const Header = (props) => {
   return (
     <S.HeaderWrapper>
       <S.AvatarWrapper>
-        <Avatar />
+        <Avatar imagePath="https://via.placeholder.com/150" />
       </S.AvatarWrapper>
       <S.Content>
         <S.Data>

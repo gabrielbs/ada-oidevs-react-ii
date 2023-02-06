@@ -1,2 +1,1 @@
-export {Text} from "./Text";
-export {TextLink} from "./styles";
+export {Text, TextLink} from "./Text";
