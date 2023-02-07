@@ -1,3 +1,4 @@
+import React from "react";
 import {Header} from "./components/header";
 import {Highlights} from "./components/highlights/highlights";
 import {Navbar} from "./components/navbar";
