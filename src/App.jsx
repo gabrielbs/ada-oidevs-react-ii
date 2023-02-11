@@ -1,22 +1,15 @@
-import React, {useEffect} from "react";
-import {Feed} from "./components/feed";
-import {Header} from "./components/header";
-import {Highlights} from "./components/highlights/highlights";
-import {Navbar} from "./components/navbar";
-import {Grid, GridItem} from "./ui/grid";
+import React from "react";
+import {Home} from "./pages/home";
+import {Login} from "./pages/login";
 
 function App() {
+  const [currentPage, setCurrentPage] = React.useState("login");
+
   return (
-    <Grid>
-      <GridItem>
-        <Navbar />
-      </GridItem>
-      <GridItem>
-        <Header />
-        <Highlights />
-        <Feed />
-      </GridItem>
-    </Grid>
+    <>
+      {currentPage === "login" && <Login onClickHomeButton={setCurrentPage} />}
+      {currentPage === "home" && <Home onClickLoginButton={setCurrentPage} />}
+    </>
   );
 }
 
