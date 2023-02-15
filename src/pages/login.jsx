@@ -61,7 +61,6 @@ export const Login = (props) => {
       </Form>
       <Button
         onClick={() => {
-          console.log({user});
           props.onClickHomeButton("home");
         }}
       >
