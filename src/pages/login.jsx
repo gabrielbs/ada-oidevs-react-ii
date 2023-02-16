@@ -1,5 +1,6 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
+import {InstaContext} from "../App";
 import {Button} from "../ui/button";
 import {Text} from "../ui/text";
 
@@ -32,14 +33,25 @@ const InputWrapper = styled.div`
   }
 `;
 
-export const Login = (props) => {
+export const Login = () => {
+  const state = React.useContext(InstaContext);
+
   const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+
   const onClickHomeHandler = () => {
-    props.onClickHomeButton("home");
+    if (pass && user) {
+      state.meuDispatch({type: "change_current_page", payload: "home"});
+      state.meuDispatch({type: "add_user", payload: {username: user}});
+    }
   };
 
   const handleChangeUser = (event) => {
     setUser(event.currentTarget.value);
+  };
+
+  const handleChangePass = (event) => {
+    setPass(event.currentTarget.value);
   };
 
   return (
@@ -56,16 +68,15 @@ export const Login = (props) => {
           />
         </InputWrapper>
         <InputWrapper>
-          <input type="password" placeholder="Digite a senha" />
+          <input
+            type="password"
+            onChange={handleChangePass}
+            value={pass}
+            placeholder="Digite a senha"
+          />
         </InputWrapper>
       </Form>
-      <Button
-        onClick={() => {
-          props.onClickHomeButton("home");
-        }}
-      >
-        Ir para a home
-      </Button>
+      <Button onClick={onClickHomeHandler}>Ir para a home</Button>
     </Wrapper>
   );
 };

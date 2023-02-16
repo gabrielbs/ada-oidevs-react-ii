@@ -1,9 +1,14 @@
+import React from "react";
+import {InstaContext} from "../../App";
 import {Button} from "../../ui/button";
 import {Text, TextLink} from "../../ui/text";
 import {Avatar} from "../avatar";
 import * as S from "./styles";
 
-export const Header = (props) => {
+export const Header = () => {
+  const state = React.useContext(InstaContext);
+  console.log(state);
+
   return (
     <S.HeaderWrapper>
       <S.AvatarWrapper>
@@ -11,7 +16,7 @@ export const Header = (props) => {
       </S.AvatarWrapper>
       <S.Content>
         <S.Data>
-          <Text bold>@adatechbr</Text>
+          <Text bold>{state.meuState.user.username}</Text>
           <Button>Seguindo</Button>
           <Button>Enviar mensagem</Button>
         </S.Data>
