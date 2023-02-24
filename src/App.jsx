@@ -1,4 +1,4 @@
-import React, {createContext} from "react";
+import React, {createContext, useEffect} from "react";
 import {Home} from "./pages/home";
 import {Login} from "./pages/login";
 import {Photo} from "./pages/Photo";
@@ -59,9 +59,17 @@ const initialState = {
 
 export const InstaContext = createContext(initialState);
 
+export const useEAI = () => {
+  useEffect(() => {
+    console.log("EAI");
+  }, []);
+};
+
 function App() {
   const [globalState, dispatch] = React.useReducer(reducer, initialState);
-  console.log(globalState.currentPage);
+
+  useEAI();
+
   return (
     <>
       <InstaContext.Provider

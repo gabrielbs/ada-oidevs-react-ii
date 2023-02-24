@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import {InstaContext} from "../App";
+import {InstaContext, useEAI} from "../App";
 import {Button} from "../ui/button";
 import {Text} from "../ui/text";
 
@@ -33,11 +33,23 @@ const InputWrapper = styled.div`
   }
 `;
 
+export const useLoginForm = (userDefaultValue = "", passDefaultValue = "") => {
+  const [user, setUser] = useState(userDefaultValue);
+  const [pass, setPass] = useState(passDefaultValue);
+
+  return {
+    user,
+    setUser,
+    pass,
+    setPass,
+  };
+};
+
 export const Login = () => {
   const state = React.useContext(InstaContext);
+  const {user, setUser, pass, setPass} = useLoginForm();
 
-  const [user, setUser] = useState("");
-  const [pass, setPass] = useState("");
+  useEAI();
 
   const onClickHomeHandler = () => {
     if (pass && user) {
